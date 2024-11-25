@@ -1,12 +1,16 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import AppPage from './pages/App';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div className="min-h-screen w-full bg-black flex items-center justify-center">
-      <h1 className="text-white text-4xl font-light tracking-wider">
-        Coming soon
-      </h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/app" element={<AppPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
