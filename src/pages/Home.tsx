@@ -7,7 +7,7 @@ const Home: React.FC = () => {
       {/* Background Image Layer */}
       <div className="absolute inset-0 z-10">
         <img 
-          src="/mtm_bg.png"
+          src="/mtm_bg.webp"
           alt="Background"
           className="w-full h-full object-cover"
         />
