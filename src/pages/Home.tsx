@@ -16,6 +16,8 @@ const Home: React.FC = () => {
       {/* Content Layer */}
       <h1 className="text-black text-4xl font-light tracking-wider z-30 relative">
         Mark assets to market value.
+        
+        @AFDudley0
       </h1>
 
       {/* Navbar */}
