@@ -1,0 +1,17 @@
+.mtm-terminal {
+    font-family: sans-serif;
+    text-align: center;
+  }
+  @keyframes blink {
+    from{
+        opacity: 0%;
+     }
+     to{
+         opacity: 100%;
+      }
+  }
+  .mtm-terminal::after{
+     content: "|";
+     animation: blink 1s infinite;
+  }
+  

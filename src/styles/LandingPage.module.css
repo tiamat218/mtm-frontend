@@ -1,0 +1,558 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --primary-dark: #0F0F1A;
+  --primary-glow: #2E1155;
+  --accent-neon: #00FFBB;
+  --accent-purple: #A259FF;
+  --accent-pink: #FF3D87;
+  --neutral-light: #F0F0FF;
+  --neutral-glass: rgba(240, 240, 255, 0.1);
+  --glass-bg: rgba(15, 15, 26, 0.7);
+  --border-glow: rgba(0, 255, 187, 0.3);
+  --border-light: rgba(240, 240, 255, 0.08);
+}
+
+.landingPage {
+  font-family: 'Space Grotesk', sans-serif;
+  background: linear-gradient(
+    135deg,
+    var(--primary-dark) 0%,
+    var(--primary-glow) 50%,
+    var(--primary-dark) 100%
+  );
+  background-attachment: fixed;
+  color: var(--neutral-light);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Gradient Orbs */
+.gradientOrb1, .gradientOrb2 {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: -1;
+}
+
+.gradientOrb1 {
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 187, 0.15) 0%,
+    rgba(162, 89, 255, 0.1) 40%,
+    transparent 70%
+  );
+  top: -400px;
+  right: -400px;
+  animation: orbFloat 25s ease-in-out infinite;
+}
+
+.gradientOrb2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 61, 135, 0.15) 0%,
+    rgba(0, 255, 187, 0.1) 40%,
+    transparent 70%
+  );
+  bottom: -300px;
+  left: -300px;
+  animation: orbFloat 20s ease-in-out infinite reverse;
+}
+
+/* Add a subtle mesh gradient overlay */
+.landingPage::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.015;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 10%;
+  position: fixed;
+  width: 80%;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 15, 30, 0.8);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.8rem;
+  background-image: linear-gradient(to right, var(--accent-neon), var(--accent-purple));
+  letter-spacing: -0.5px;
+  color: var(--accent-cyan);
+  background-image: linear-gradient(to right, var(--accent-cyan), var(--light-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+/* Add after header styles and before main card styles */
+
+.banner {
+  margin: 0 auto 3rem;
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+}
+
+.bannerImage {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.bannerCaption {
+  font-size: 0.9rem;
+  color: var(--neutral-gray);
+  opacity: 0.8;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+/* Update main card margin */
+.mainCard {
+  margin: 15vh 10% 0;
+  padding: 3rem 4rem 4rem;
+  background: linear-gradient(
+    145deg,
+    rgba(46, 17, 85, 0.4) 0%,
+    rgba(15, 15, 26, 0.4) 100%
+  );
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  border: 1px solid var(--border-light);
+  text-align: center;
+  position: relative;
+  background-size: 200% 200%;
+  animation: gradientMove 15s ease infinite;
+}
+
+.mainCard h1 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 4rem;
+  letter-spacing: -1px;
+  background: linear-gradient(to right, var(--neutral-light), var(--accent-neon));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.mainCard p {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  opacity: 0.8;
+  margin-bottom: 3rem;
+  color: var(--neutral-gray);
+}
+
+.gradientText {
+  color: var(--accent-cyan);
+  background-image: linear-gradient(to right, var(--accent-cyan), var(--light-cyan));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.mainCardImage {
+  position: relative;
+  margin-top: 3rem;
+}
+
+.mainCardImage img {
+  width: 100%;
+  max-width: 1000px;
+  border-radius: 12px;
+  border: 1px solid var(--border-light);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+
+.imageGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(28,202,216,0.15),
+    rgba(241,108,32,0.1),
+    transparent
+  );
+  filter: blur(40px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mainCardImage:hover .imageGlow {
+  opacity: 1;
+}
+
+/* Features */
+.features {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  padding: 10vh 5%;
+}
+
+.featureCard {
+  background: linear-gradient(
+    145deg,
+    rgba(46, 17, 85, 0.3) 0%,
+    rgba(15, 15, 26, 0.3) 100%
+  );
+  backdrop-filter: blur(10px);
+  padding: 3rem 2rem;
+  border-radius: 16px;
+  border: 1px solid var(--border-light);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.5rem;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(28,202,216,0.1);
+  border-color: rgba(28, 202, 216, 0.3);
+  background: linear-gradient(
+    145deg,
+    rgba(30, 36, 90, 0.6) 0%,
+    rgba(10, 15, 30, 0.6) 100%
+  );
+}
+
+.featureCard h3 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  letter-spacing: -0.5px;
+  background: linear-gradient(to right, var(--accent-neon), var(--accent-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  color: var(--neutral-gray);
+  margin: 1rem 0;
+}
+
+.featureCard p {
+  color: var(--neutral-gray);
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+.featureIcon {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  margin-bottom: 2.5rem;
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 4px 12px rgba(28,202,216,0.2));
+  border-radius: 16px;
+}
+
+.featureCard:hover .featureIcon {
+  transform: translateY(-8px);
+  filter: drop-shadow(0 12px 24px rgba(28,202,216,0.3));
+}
+
+/* CTA Section */
+.cta {
+  text-align: center;
+  padding: 10vh 0;
+}
+
+/* Button Styles */
+.ctaButton {
+  background: linear-gradient(135deg, var(--highlight-orange), var(--golden-yellow));
+  border: none;
+  color: var(--neutral-gray);
+  padding: 0.75rem 1.75rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(241,108,32,0.2);
+}
+
+.ctaButton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    rgba(255,255,255,0.1),
+    rgba(255,255,255,0)
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ctaButton:hover::after {
+  opacity: 1;
+}
+
+.buttonSparkle {
+  position: absolute;
+  right: 1rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Footer */
+.footer {
+  padding: 2rem 10%;
+  border-top: 1px solid var(--border-light);
+  background: var(--background-dark);
+}
+
+.footerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footerLinks {
+  display: flex;
+  gap: 2rem;
+}
+
+.footerLinks a {
+  color: var(--neutral-gray);
+  opacity: 0.7;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.footerLinks a:hover {
+  color: var(--accent-cyan);
+}
+
+/* Animations */
+@keyframes orbFloat {
+  0%, 100% { 
+    transform: translate(0, 0) scale(1); 
+    opacity: 0.5;
+  }
+  50% { 
+    transform: translate(30px, -30px) scale(1.1); 
+    opacity: 0.7;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% { transform: scale(1); opacity: 0.5; }
+  50% { transform: scale(1.2); opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .mainCard h1 {
+    font-size: 2.5rem;
+  }
+
+  .footerContent {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+/* Add smooth scrolling to the page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Additional styles for better text contrast */
+h1, h2, h3 {
+  color: var(--neutral-gray);
+}
+
+p {
+  color: var(--neutral-gray);
+  opacity: 0.8;
+}
+
+/* Enhance card hover effects */
+.featureCard {
+  transition: all 0.3s ease;
+}
+
+.featureCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(28,202,216,0.1);
+}
+
+/* Add subtle animation to gradient backgrounds */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.mainCard {
+  background-size: 200% 200%;
+  animation: gradientMove 15s ease infinite;
+}
+
+/* Add bounce animation for banner icon */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+/* Mobile styles will only apply below 768px */
+@media screen and (max-width: 768px) {
+  /* Header */
+  .header {
+    padding: 1rem 5%;
+    width: 90%;
+  }
+
+  /* Main card */
+  .mainCard {
+    margin: 12vh 5% 0;
+    padding: 1.5rem;
+  }
+
+  .mainCard h1 {
+    font-size: 2.2rem;
+  }
+
+  /* Banner */
+  .banner {
+    margin: 0 auto 2rem;
+  }
+
+  .bannerImage {
+    border-radius: 8px;
+  }
+
+  /* Features */
+  .features {
+    grid-template-columns: 1fr;
+    padding: 2rem 5%;
+    gap: 2rem;
+  }
+
+  .featureIcon {
+    width: 100%; /* Full width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 300px; /* Maximum width */
+  }
+
+  /* Footer */
+  .footerContent {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .footerLinks {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+  }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 380px) {
+  .mainCard h1 {
+    font-size: 1.8rem;
+  }
+
+  .mainCard {
+    padding: 1rem;
+  }
+
+  .featureCard {
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Add better touch interactions for mobile */
+@media (hover: none) {
+  .featureCard:active {
+    transform: translateY(-3px);
+  }
+
+  .ctaButton:active {
+    transform: translateY(-1px);
+  }
+}
+
+/* Add subtle pulse animation to gradient background */
+@keyframes gradientPulse {
+  0%, 100% { 
+    background-position: 0% 50%;
+  }
+  50% { 
+    background-position: 100% 50%;
+  }
+}
+
+.landingPage {
+  animation: gradientPulse 20s ease infinite;
+  background-size: 200% 200%;
+}
+
+.terminalSection {
+  margin: 2rem auto;
+  position: relative;
+  z-index: 1;
+}
+
+.terminal-frame {
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+  min-height: 200px;
+}
+
+.mtm-terminal {
+  min-height: 150px;
+  font-family: monospace;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.mtm-terminal::after {
+  content: '_';
+  animation: blink 1s infinite;
+}
+  
