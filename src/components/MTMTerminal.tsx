@@ -3,34 +3,46 @@ import { useState, useEffect } from 'react';
 interface MTMTerminalProps {
   content: string;
   speed?: number;
+  skipAnimation?: boolean;
 }
 
-const MTMTerminal = ({ content = "", speed = 50 }: MTMTerminalProps) => {
-  const [displayedContent, setDisplayedContent] = useState("");
+const MTMTerminal: React.FC<MTMTerminalProps> = ({ content, speed = 50, skipAnimation = false }) => {
+  const [displayedContent, setDisplayedContent] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
 
-  // Reset and reanimate when content changes
   useEffect(() => {
-    setDisplayedContent(""); // Clear previous content
-    let currentText = "";
-    let currentIndex = 0;
+    setDisplayedContent('');
+    
+    if (skipAnimation) {
+      setDisplayedContent(content);
+      setIsTyping(false);
+      return;
+    }
 
-    const intervalId = setInterval(() => {
-      if (currentIndex < content.length) {
-        currentText += content[currentIndex];
-        setDisplayedContent(currentText);
+    setIsTyping(true);
+    let currentIndex = 0;
+    const contentLength = content.length;
+
+    const typingInterval = setInterval(() => {
+      if (currentIndex < contentLength) {
+        setDisplayedContent(prev => content.slice(0, currentIndex + 1));
         currentIndex++;
       } else {
-        clearInterval(intervalId);
+        clearInterval(typingInterval);
+        setIsTyping(false);
       }
     }, speed);
 
-    // Cleanup on unmount or content change
-    return () => clearInterval(intervalId);
-  }, [content, speed]);
+    return () => {
+      clearInterval(typingInterval);
+      setIsTyping(false);
+    };
+  }, [content, speed, skipAnimation]);
 
   return (
-    <pre className="mtm-terminal font-mono text-green-500 whitespace-pre-wrap break-words overflow-x-hidden w-full">
+    <pre className="font-mono text-green-500 whitespace-pre-wrap select-none user-select-none">
       {displayedContent}
+      {isTyping && <span className="animate-blink">_</span>}
     </pre>
   );
 };
