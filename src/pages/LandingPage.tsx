@@ -113,6 +113,7 @@ const LandingPage: React.FC = () => {
 PERFORMING MARK TO MARKET ANALYSIS...
 Current Price: $${token.token_data.current_price_usd.toFixed(6)}
 MTM Price: ${token.result.split('MTM Price')[1].split(':')[1].split('-')[0].trim()}
+${token.result.split('MTM Price')[1].split('-')[1].split('Recommendation')[0].trim()}
 ------------------------------
 RECOMMENDATION: ${recommendation}`;
   };
